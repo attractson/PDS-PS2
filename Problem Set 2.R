@@ -1,3 +1,5 @@
+##### Danny Kim PS2 #####
+
 rm(list=ls())
 
 # Problem 1
@@ -11,40 +13,42 @@ for (i in 1:7){
 set.seed(14)
 for(i in 1:1000){
   dice <- sample(1:6,size=2,replace=TRUE)
-  print(dice)
   rollResult <- sum(dice)
   if(i ==1 & rollResult > 7){
-    print ("avg number of dice cast per game is 1") 
+    ## paste for the print
+    print (paste("avg number of dice cast per game is", i))
     break
   } else if (i!=1 & (dice[1]==2 | dice[2]==2 | dice[1]==6 | dice[2]==6)){
+    ## dice [#] shows the result of size 1's sample
     print (paste("avg number of dice cast per game is", i))
     break}
-  
-  
 }
 
 #problem3
 p3ds <-read.csv("http://politicaldatascience.com/PDS/Problem%20Sets/Problem%20Set%202/GSS-data.csv")
-
+cleanP3<- p3ds$pres16
 vote.choice <- function(x){
   if(x=="Trump"){
-    trumpVotes <- length(p3ds$pres16[p3ds$pres16==x])
+    #length <- to get a number of count
+    trumpVotes <- length(cleanP3[cleanP3==x])
     return(trumpVotes)
   }
   if(x=="Clinton"){
-    cliVotes <- length(p3ds$pres16[p3ds$pres16==x])
+    cliVotes <- length(cleanP3[cleanP3==x])
     return(cliVotes)
   }else if(x=="Other"){
-    otherVotes <- length(p3ds$pres16[p3ds$pres16!="Trump" && p3ds$pres16[p3ds$pres16!="Clinton"]])
+    otherVotes <- length(cleanP3[v!="Trump" && cleanP3[cleanP3!="Clinton"]])
     return(otherVotes)
   }else{
     print("Please enter either 'Trump' 'Clinton' or 'Other' into the function to return a valid response")
     }
 }
 vote.choice("Clinton")
+## 764
 vote.choice("Trump")
+## 577
 vote.choice("Danny Kim")
-
+## Error :(
 
 # problem 4
 
@@ -52,9 +56,7 @@ vote.choice("Danny Kim")
 install.packages('fivethirtyeight')
 library(fivethirtyeight)
 
-
 ## call cabinent_turnover
-
 ## Create a dataframe to make it easier to calculate days
 
 
