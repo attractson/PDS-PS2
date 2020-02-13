@@ -118,6 +118,7 @@ congress_stats <- function(x) {
 }
 
 #test to see if it works
+## Wasn't sure if we need to round it so I just left it
 congress_stats("congress")
 congress_stats("state")
 congress_stats("Danny Kim")
